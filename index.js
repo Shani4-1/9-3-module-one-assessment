@@ -165,13 +165,13 @@ function countByRating(movies) {
     };
  */
 function findById(movies, id) {
-  let movie = {};
-  let movieId = ''
+  let movie = null;
+  // let movieId = ''
   for (let i = 0; i < movies.length; i++) {
-    movie = movies[i];
-    movieId = movies[i].imbdID
-    if (movie.moviesId.includes(id)) {
-      return movie
+    // movie = movies[i];
+    // movieId = movies[i].imbdID
+    if (movies.imbdID.includes(movies[i][id])) {
+      return movies[i]
     }
   }
   return movie
