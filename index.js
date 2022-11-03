@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
+const movies = require("./movies");
 const exampleMovies = require("./movies");
 // Do not change the line above.
 
@@ -28,7 +29,18 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  let onlyTitles = [];
+  let movieTitle = '';
+  for (let i = 0; i < movies.length; i++) {
+    let movie = movies[i];
+    movieTitle = movie.title;
+    if (movies.length >= 1) {
+      onlyTitles.push(movieTitle)
+    }
+  }
+  return onlyTitles;
+}
 
 /**
  * getHighestMetascore()
@@ -41,7 +53,19 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {
+  let highestMetascore = 0;
+  let oneScoreAtATime = 0;
+  for (let i = 0; i < movies.length; i++) {
+    oneScoreAtATime = Number(movies[i].metascore);
+    // console.log(oneScoreAtATime)
+    if (oneScoreAtATime > highestMetascore) {
+      highestMetascore = oneScoreAtATime
+      // console.log(highestMetascore)
+    }
+  }
+  return Number(highestMetascore)
+}
 
 /**
  * getAverageIMDBRating()
@@ -54,7 +78,29 @@ function getHighestMetascore() {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+  let averageOfRatings = 0;
+  let iMDBRating = '';
+  let numberOfRatings = movies.length;
+  let ratingsAsANumber = 0;
+  let sum = 0;
+  for (let i = 0; i < movies.length; i++) {
+    iMDBRating = movies[i].imdbRating;
+    let decimal = eval(iMDBRating);
+  ;
+    console.log(decimal)
+    if (numberOfRatings){
+      ratingsAsANumber = decimal;
+      // console.log(ratingsAsANumber)
+      sum += ratingsAsANumber
+
+    }
+    averageOfRatings = (sum / numberOfRatings);
+  }
+  
+  
+  return averageOfRatings;
+}
 
 /**
  * countByRating()
@@ -67,7 +113,42 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  let howManyMoviesGotRating = {};
+  let oneRating = '';
+  
+  let timesRated = 0;
+  for (let movie of movies) {
+    
+    let movieRatings = movie.ratings
+    console.log(movieRatings)
+    for (let i = 0; i < movieRatings.length; i++) {
+      oneRating = movieRatings[i].value;
+      console.log(oneRating);
+      if(oneRating) {
+        if(howManyMoviesGotRating.includes(oneRating)) {
+          howManyMoviesGotRating[oneRating] = timesRated++;
+        }else{
+          howManyMoviesGotRating = {
+            [oneRating]: timesRated++
+          }
+            
+        }
+      }
+    }
+
+  }
+  console.log(oneRating);
+  console.log(sourceOfRating);
+  return howManyMoviesGotRating
+}
+     
+            
+
+           
+         
+   
+
 
 /**
  * findById()
@@ -83,7 +164,18 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  let movie = {};
+  let movieId = ''
+  for (let i = 0; i < movies.length; i++) {
+    movie = movies[i];
+    movieId = movies[i].imbdID
+    if (movie.moviesId.includes(id)) {
+      return movie
+    }
+  }
+  return movie
+}
 
 /**
  * filterByGenre()

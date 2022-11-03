@@ -12,7 +12,7 @@ const {
 const movies = require("../movies");
 const alternative = require("./fixtures/alternative-movies");
 
-describe("getAllMovieTitles()", () => {
+describe.only("getAllMovieTitles()", () => {
   test("should return all of the movie titles in an array", () => {
     const actual = getAllMovieTitles(movies);
     const expected = [
@@ -41,7 +41,7 @@ describe("getAllMovieTitles()", () => {
   });
 });
 
-describe("getHighestMetascore()", () => {
+describe.only("getHighestMetascore()", () => {
   test("should return highest Metascore of all movies as a number", () => {
     const actual = getHighestMetascore(movies);
     const expected = 96;
@@ -59,7 +59,7 @@ describe("getHighestMetascore()", () => {
   });
 });
 
-describe("getAverageIMDBRating()", () => {
+describe.only("getAverageIMDBRating()", () => {
   test("should return the average IMDB rating across all movies", () => {
     const actual = getAverageIMDBRating(movies);
     const expected = 7.76;
@@ -77,7 +77,7 @@ describe("getAverageIMDBRating()", () => {
   });
 });
 
-describe("countByRating()", () => {
+describe.only("countByRating()", () => {
   test("should return an object where the keys are ratings and the values are the number of movies with that rating", () => {
     const actual = countByRating(movies);
     const expected = { G: 3, PG: 7 };
@@ -95,7 +95,7 @@ describe("countByRating()", () => {
   });
 });
 
-describe("findById()", () => {
+describe.only("findById()", () => {
   test("should return the entire movie based on the IMDB ID", () => {
     const id = "tt0892769";
     const actual = findById(movies, id);
